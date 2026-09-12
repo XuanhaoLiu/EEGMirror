@@ -88,7 +88,7 @@ python scripts/run_alignment.py \
   --sub sub1 \
   --pretrain_ckpt ./output/pretrain/pretrain_last.pt \
   --encoder_model_size small --codebook_size 1024 \
-  --batch_size 8 --epochs 50 --lr 1e-4 \
+  --batch_size 8 --epochs 200 --lr 1e-4 \
   --seq2seq_depth 4 --seq2seq_heads 8 \
   --output_dir ./output/align --results_dir ./results
 ```
@@ -97,6 +97,10 @@ Add `--co_train_diffusion --unet_ckpt <dir>` to also co-train a pre-fine-tuned i
 `save_pretrained()` checkpoint, e.g. `./output/finetuned_t2v_ckpt`); fine-tuning that checkpoint on
 SEED-DV's videos + BLIP captions is a separate step (Tune-A-Video's own `train_tuneavideo.py`).
 Omitting `--unet_ckpt` falls back to a toy UNet stand-in.
+
+> **Note:** this requires `git clone https://github.com/showlab/Tune-A-Video` somewhere on your
+> machine, and editing `TUNEAVIDEO_ROOT` in `eegmirror/modeling_diffusion.py` to point at wherever
+> you cloned it.
 
 ## Citation
 
