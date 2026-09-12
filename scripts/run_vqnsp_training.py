@@ -4,12 +4,10 @@
 # reconstruction target (see eegmirror/modeling_vqnsp.py).
 #
 # Can be pointed at several REAL dataset directories with DIFFERENT
-# montages at once (one DataLoader per --data_specs entry, like LaBraM's
-# `build_pretraining_dataset`) -- MAPE is what makes a single shared
-# model able to consume all of them. Each entry reads unlabeled raw EEG
+# montages at once (one DataLoader per --data_specs entry) MAPE makes a single shared
+# model able to train on all of them. Each entry reads unlabeled raw EEG
 # directly off disk in non-overlapping `--window_sec`-second windows (see
-# eegmirror/datasets.py:RawEEGDataset) -- no pre-materialized cache files
-# are needed.
+# eegmirror/datasets.py:RawEEGDataset)
 # --------------------------------------------------------
 import argparse
 import os
