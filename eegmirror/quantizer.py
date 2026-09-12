@@ -1,11 +1,9 @@
 # --------------------------------------------------------
 # EEGMirror
 # EMA-updated, L2-normalized vector quantizer (the "neural codebook" of
-# paper Sec 3.1.3), adapted near-verbatim from LaBraM's
-# norm_ema_quantizer.py (itself adapted from BEiT-v2 / VQ-VAE-2), since
-# EEGMirror does not change the quantization mechanics -- only *what* the
-# codebook is trained to reconstruct changes (amplitude only, see
-# modeling_vqnsp.py).
+# paper Sec 3.1.3), adapted from LaBraM's
+# norm_ema_quantizer.py (itself adapted from BEiT-v2 / VQ-VAE-2),
+#(amplitude only, see modeling_vqnsp.py).
 # --------------------------------------------------------
 import torch
 import torch.nn as nn
