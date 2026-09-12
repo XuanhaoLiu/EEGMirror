@@ -7,9 +7,6 @@
 #   - Seq2Seq low-level decoder D_l : auto-regressive Transformer decoder,
 #     EEG patch-token sequence -> per-frame Stable-Diffusion VAE latents
 #     H_hat = {h_hat_1, ..., h_hat_M}, trained with MSE.
-#
-# This module does not depend on LaBraM at all (LaBraM has no downstream
-# multimodal alignment stage); it is new for EEGMirror / EEG2Video.
 # --------------------------------------------------------
 import torch
 import torch.nn as nn
