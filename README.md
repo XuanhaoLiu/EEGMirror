@@ -8,7 +8,7 @@ Shanghai Jiao Tong University
 We present, **EEGMirror**, a brain decoding framework that reconstructs dynamic visual perception from EEG signals by pretraining on EEG data in the wild: **1) Neural Quantization** EEGMirror converts nonstationary raw EEG signals into robust discrete representations via a neural codebook. **2) Montage-Agnostic Position Embedding (MAPE)** EEGMirror derives each channel's position directly from its scalp proportion instead of a fixed per-channel lookup table, letting a single masked-pretrained EEG encoder flexibly leverage heterogeneous EEG datasets that vary in montages. **3) Multimodal Contrastive Alignment** EEGMirror aligns the pretrained encoder with both high-level semantic (CLIP text) and low-level perceptual (per-frame VAE latent) visual information decoded from EEG, which then guides a fine-tuned inflated Stable Diffusion model to reconstruct the video stimuli.
 
 ## Data Preprocessing
-We use the public SEED and SEED-DV dataset from [this](https://bcmi.sjtu.edu.cn/home/seed/), and FACED dataset from [this](https://www.synapse.org/Synapse:syn50614194). The EEG data files are arranged as follows:
+We use the public SEED and SEED-DV dataset from [this](https://bcmi.sjtu.edu.cn/home/seed/), and FACED dataset from [this](https://www.synapse.org/Synapse:syn50614194). The `EEGdata` files are arranged as follows, please put `EEGdata` folder and `EEGMirror` project in the same directory.
 
 ```
 📂 EEGdata
@@ -16,7 +16,6 @@ We use the public SEED and SEED-DV dataset from [this](https://bcmi.sjtu.edu.cn/
 ┃   ┣ 📜 1_20131027.mat
 ┃   ┣ ...
 ┃   ┣ 📜 15_20131105.mat
-
 ┣ 📂 SEED-DV
 ┃   ┣ 📂 EEG
 ┃   ┃   ┗ 📜 sub1.npy
@@ -24,11 +23,15 @@ We use the public SEED and SEED-DV dataset from [this](https://bcmi.sjtu.edu.cn/
 ┃   ┃   ┗ 📜 sub20.npy
 ┃   ┣ gt_text_embedding.pt #(1400, 77, 768)
 ┃   ┣ gt_3fps_frame_latent.pt #(1400, 6, 4, 36, 64)
-
-┣ 📂 /FACED/Processed_data
+┣ 📂 FACED/Processed_data
 ┃   ┣ 📜 sub000.pkl
 ┃   ┣ ...
 ┃   ┣ 📜 sub122.pkl
+
+📂 EEGMirror
+┣ 📂 eegmirror
+┣ 📂 script
+┣ requirements.txt
 ```
 
 ## How to run our code
