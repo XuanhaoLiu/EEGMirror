@@ -53,9 +53,9 @@ pip install -r requirements.txt   # the rest: numpy, scipy, timm, einops
 `--patch_len_sec`: EEG patch length, default 0.2.
 ```bash
 python scripts/run_vqnsp_training.py \
-  --data_specs seed:/work1/xuanhao/EEGdata/SEED/Preprocessed_EEG \
-               seeddv:/work1/xuanhao/EEGdata/SEED-DV/EEG \
-               faced:/work1/xuanhao/EEGdata/FACED/Processed_data \
+  --data_specs seed:/EEGdata/SEED/Preprocessed_EEG \
+               seeddv:/EEGdata/SEED-DV/EEG \
+               faced:/EEGdata/FACED/Processed_data \
   --window_sec 4.0 --sampling_rate 200 --patch_len_sec 0.2 \
   --model_size small --codebook_size 1024 --code_dim 32 \
   --batch_size 8 --epochs 50 --lr 5e-4 \
@@ -67,9 +67,9 @@ python scripts/run_vqnsp_training.py \
 `--random_mask_ratio` / `--channel_mask_ratio` / `--frame_mask_ratio`: each strategy's masking ratio.  
 ```bash
 python scripts/run_pretraining.py \
-  --data_specs seed:/work1/xuanhao/EEGdata/SEED/Preprocessed_EEG \
-               seeddv:/work1/xuanhao/EEGdata/SEED-DV/EEG \
-               faced:/work1/xuanhao/EEGdata/FACED/Processed_data \
+  --data_specs seed:/EEGdata/SEED/Preprocessed_EEG \
+               seeddv:/EEGdata/SEED-DV/EEG \
+               faced:/EEGdata/FACED/Processed_data \
   --window_sec 4.0 \
   --vqnsp_ckpt ./output/vqnsp/vqnsp_last.pt --vqnsp_model_size small \
   --codebook_size 1024 --code_dim 32 --model_size small \
