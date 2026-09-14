@@ -117,8 +117,17 @@ class EEGMirrorAlignModel(nn.Module):
             losses['text_mse_loss'] = F.mse_loss(pred_text, text_target)
         if frame_target is not None:
             losses['low_level_mse_loss'] = F.mse_loss(pred_frames, frame_target)
-
-        total_loss = sum(losses.values()) if losses else None
+        # loss weights
+        loss_weights = {
+            'softclip_loss': 1e-4,
+            'text_mse_loss': 1.0,
+            'low_level_mse_loss': 1e-4,
+        }
+        total_loss = (
+            sum(loss_weights[k] * v for k, v in losses.items())
+            if losses else None
+        )
+        # total_loss = sum(losses.values()) if losses else None
         return {
             'pred_text_embed': pred_text,
             'pred_frame_latents': pred_frames,
