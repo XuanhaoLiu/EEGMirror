@@ -30,7 +30,7 @@ We use the public SEED and SEED-DV dataset from [this](https://bcmi.sjtu.edu.cn/
 
 📂 EEGMirror
 ┣ 📂 eegmirror
-┣ 📂 script
+┣ 📂 scripts
 ┣ requirements.txt
 ```
 
